@@ -1,10 +1,11 @@
 import pandas
 from sklearn import preprocessing
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 import numpy
 # Load dataset
-url = "C:/Users/Asus/Desktop/Suven/practise_DS/adult.csv"
+url = "adult.csv"
 df = pandas.read_csv(url)
 
 # filling missing values
@@ -50,6 +51,11 @@ print ("Desicion Tree using Gini Index\nAccuracy is ", accuracy_score(y_test,y_p
 
 #creating and training a model
 #serializing our model to a file called model.pkl
+
 import pickle
 pickle.dump(dt_clf_gini, open("model.pkl","wb"))
+
+import pickle
+loaded_model = pickle.load(open("model.pkl","rb"))
+print(loaded_model)
 
